@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/download-artifact@v4.3.0
 
       - uses: krdlab/setup-haxe@v1.5.1
         with:
@@ -57,7 +57,7 @@ jobs:
       - name: Compile
         run: haxelib run lime build Project.xml linux --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
-        uses: actions/upload-artifact@v4.2.2
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: linuxBuild
           path: 'export/release/linux/bin'
